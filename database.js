@@ -19,11 +19,12 @@ mongoose.connection.on("error",(error) => {
 
 const connectToMongoDB = async() => {
 
-    const connectingString  = `${process.env.PROTOCOL}${process.env.DB_USER_NAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}`
+    // const connectingString  = `${process.env.PROTOCOL}${process.env.DB_USER_NAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}`
+    const connectingString=(process.env.MONGO_URL)
     mongoose.connect(connectingString, {
         maxPoolSize: 10
     })
-
+// console.log(connectingString);
 }
 
 export default connectToMongoDB
