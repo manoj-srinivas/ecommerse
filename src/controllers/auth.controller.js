@@ -153,7 +153,7 @@ export const customerSignUp = async (req, res) => {
 export const testHealthCheck=async(req, res) => {
   try {
     const data = "Test Check";
-    return res.status(200).json({ message: "Working !!" ,data:data});
+    return res.status(200).json({ message: "Working dev !!" ,data:data});
   } catch (err) {
     return res.status(500).json({ message: "Error" });
   }
