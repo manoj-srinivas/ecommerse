@@ -149,3 +149,12 @@ export const customerSignUp = async (req, res) => {
     responseError(res, error, StatusCode.NOT_FOUND);
   }
 };
+
+export const testHealthCheck=async(req, res) => {
+  try {
+    const data = "Test Check";
+    return res.status(200).json({ message: "Working !!" ,data:data});
+  } catch (err) {
+    return res.status(500).json({ message: "Error" });
+  }
+}

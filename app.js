@@ -40,7 +40,8 @@ app.use(
     "/auth/signUp",
     "/auth/signIn",
     "/auth/customerSignUp",
-    "/auth/customerSignIn"
+    "/auth/customerSignIn",
+    "/auth/healthCheck"
   ),
   index
 );
