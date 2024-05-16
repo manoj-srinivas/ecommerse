@@ -1,0 +1,31 @@
+name: CI/CD Pipeline
+
+on:
+  pull_request:
+  push:
+    branches: [dev]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Load .env variables
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          env_vars_file: .env
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm run test
+
+      - name: Deploy
+        # Only run this step if the branch is dev
+        if: github.ref == 'refs/heads/dev'
+        env:
+          DEPLOY_URL: ${{ env.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          curl -X POST "$DEPLOY_URL"
