@@ -26,6 +26,6 @@ jobs:
         # Only run this step if the branch is dev
         if: github.ref == 'refs/heads/dev'
         env:
-          DEPLOY_URL: ${{ env.RENDER_DEPLOY_HOOK_URL }}
+          DEPLOY_URL: ${{'https://api.render.com/deploy/srv-cp0u3ca1hbls73egure0?key=sclVMtndJSk'}}
         run: |
           curl -X POST "$DEPLOY_URL"
